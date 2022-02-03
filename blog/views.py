@@ -1,16 +1,21 @@
 from django.db.models import Count
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from .models import Category, Post
 
-def get_category_count():
-    queryset = Post.objects.values('category__category').annotate(Count('category'))
-    return queryset
 
 # Create your views here.
 def post_list(request):
-    category_count = get_category_count()
-    print(category_count)
     posts = Post.objects.filter(active=True)
+    paginator = Paginator(posts, 2)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+    try:
+        paginated_queryset = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_queryset = paginator.page(1)
+    except EmptyPage:
+        paginated_queryset = paginator.page(paginator.num_pages)
     categories = Category.objects.all()
-    context = {'posts': posts, 'categories': categories, 'category_count': category_count}
+    context = {'posts': paginated_queryset, 'categories': categories, 'page_request_var': page_request_var}
     return render(request, 'home.html', context)
