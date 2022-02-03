@@ -34,98 +34,61 @@
                   {% endfor %}
               </ul>
               <footer class="section-padding--sm footer">
-                  <a class="footer__archive" href="#">Archive</a>
-                  <ul class="footer__social">
-                      <li><a class="fa fa-lg fa-envelope-o" href="mailto:thomas.sevbofx@gmail.com"></a></li>
-                      <li><a class="fa fa-lg fa-github" href="https://github.com/sevbo2003" target="_blank"></a>
-                      </li>
-                      <li><a class="fab fa-lg fa-telegram-plane" href="https://codepen.io/thomasvaeth/" target="_blank"></a>
-                      </li>
-                      <li><a class="fa fa-lg fa-linkedin" href="https://www.linkedin.com/in/abdusamad-malikov/"
-                             target="_blank"></a></li>
-                      <li><a class="fab fa-lg fa-youtube" href="https://www.youtube.com/channel/UCmA8lwHZHfpbSkbv65awfdQ" target="_blank"></a>
-                      </li>
-                      <li><a class="fa fa-lg fa-facebook" href="https://www.facebook.com/abdusamad.malikov.18"
-                             target="_blank"></a></li>
-                      <li><a class="fa fa-lg fa-instagram" href="https://www.instagram.com/abdusamad_malikov/"
-                             target="_blank"></a></li>
-                  </ul>
-              </footer>
+                <a class="footer__archive" href="#">Archive</a>
+                <ul class="footer__social">
+                    <li><a class="fa fa-lg fa-envelope-o" href="mailto:thomas.sevbofx@gmail.com"></a></li>
+                    <li><a class="fa fa-lg fa-github" href="https://github.com/sevbo2003" target="_blank"></a>
+                    </li>
+                    <li><a class="fab fa-lg fa-telegram-plane" href="https://codepen.io/thomasvaeth/" target="_blank"></a>
+                    </li>
+                    <li><a class="fa fa-lg fa-linkedin" href="https://www.linkedin.com/in/abdusamad-malikov/"
+                           target="_blank"></a></li>
+                    <li><a class="fab fa-lg fa-youtube" href="https://www.youtube.com/channel/UCmA8lwHZHfpbSkbv65awfdQ" target="_blank"></a>
+                    </li>
+                    <li><a class="fa fa-lg fa-facebook" href="https://www.facebook.com/abdusamad.malikov.18"
+                           target="_blank"></a></li>
+                    <li><a class="fa fa-lg fa-instagram" href="https://www.instagram.com/abdusamad_malikov/"
+                           target="_blank"></a></li>
+                </ul>
+            </footer>
           </div>
 
           <div class="tab">
               <ul class="cards">
+                {% for cat in categories %}
                   <li class="card">
                       <a class="card__link" href="#">
                           <div class="card__img">
                               <figure class="absolute-bg"
-                                      style="background-image: url('https://unsplash.it/500/300?image=1074');"></figure>
+                                      style="background-image: url('{{ cat.category_image.url }}');"></figure>
                           </div>
                           <div class="card__container">
-                              <h2 class="card__header">Brunch</h2>
-                              <p class="card__count">3 Posts</p>
+                              <h2 class="card__header">{{ cat.category|upper }}</h2>
+                              <p class="card__count"></p>
                               <span class="card__more">View All</span>
                           </div>
                       </a>
                   </li>
-                  <li class="card">
-                      <a class="card__link" href="#">
-                          <div class="card__img">
-                              <figure class="absolute-bg"
-                                      style="background-image: url('https://unsplash.it/500/300?image=718');"></figure>
-                          </div>
-                          <div class="card__container">
-                              <h2 class="card__header">Gluten-free</h2>
-                              <p class="card__count">2 Posts</p>
-                              <span class="card__more">View All</span>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="card">
-                      <a class="card__link" href="#">
-                          <div class="card__img">
-                              <figure class="absolute-bg"
-                                      style="background-image: url('https://unsplash.it/500/300?image=1060');"></figure>
-                          </div>
-                          <div class="card__container">
-                              <h2 class="card__header">Cities</h2>
-                              <p class="card__count">3 Posts</p>
-                              <span class="card__more">View All</span>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="card">
-                      <a class="card__link" href="#">
-                          <div class="card__img">
-                              <figure class="absolute-bg"
-                                      style="background-image: url('https://unsplash.it/500/300?image=16');"></figure>
-                          </div>
-                          <div class="card__container">
-                              <h2 class="card__header">Juice</h2>
-                              <p class="card__count">2 Posts</p>
-                              <span class="card__more">View All</span>
-                          </div>
-                      </a>
-                  </li>
+                  {% endfor %}
               </ul>
               <footer class="section-padding--sm footer">
-                  <a class="footer__archive" href="#">Archive</a>
-                  <ul class="footer__social">
-                      <li><a class="fa fa-lg fa-envelope-o" href="mailto:thomas.vaeth@gmail.com"></a></li>
-                      <li><a class="fa fa-lg fa-github" href="https://github.com/thomasvaeth" target="_blank"></a>
-                      </li>
-                      <li><a class="fa fa-lg fa-codepen" href="https://codepen.io/thomasvaeth/" target="_blank"></a>
-                      </li>
-                      <li><a class="fa fa-lg fa-linkedin" href="https://www.linkedin.com/in/thomasvaeth"
-                             target="_blank"></a></li>
-                      <li><a class="fa fa-lg fa-twitter" href="https://twitter.com/thomasvaeth" target="_blank"></a>
-                      </li>
-                      <li><a class="fa fa-lg fa-facebook" href="https://www.facebook.com/thomas.vaeth"
-                             target="_blank"></a></li>
-                      <li><a class="fa fa-lg fa-instagram" href="https://www.instagram.com/thomas.vaeth/"
-                             target="_blank"></a></li>
-                  </ul>
-              </footer>
+                <a class="footer__archive" href="#">Archive</a>
+                <ul class="footer__social">
+                    <li><a class="fa fa-lg fa-envelope-o" href="mailto:thomas.sevbofx@gmail.com"></a></li>
+                    <li><a class="fa fa-lg fa-github" href="https://github.com/sevbo2003" target="_blank"></a>
+                    </li>
+                    <li><a class="fab fa-lg fa-telegram-plane" href="https://codepen.io/thomasvaeth/" target="_blank"></a>
+                    </li>
+                    <li><a class="fa fa-lg fa-linkedin" href="https://www.linkedin.com/in/abdusamad-malikov/"
+                           target="_blank"></a></li>
+                    <li><a class="fab fa-lg fa-youtube" href="https://www.youtube.com/channel/UCmA8lwHZHfpbSkbv65awfdQ" target="_blank"></a>
+                    </li>
+                    <li><a class="fa fa-lg fa-facebook" href="https://www.facebook.com/abdusamad.malikov.18"
+                           target="_blank"></a></li>
+                    <li><a class="fa fa-lg fa-instagram" href="https://www.instagram.com/abdusamad_malikov/"
+                           target="_blank"></a></li>
+                </ul>
+            </footer>
           </div>
   </section>
 </main>
