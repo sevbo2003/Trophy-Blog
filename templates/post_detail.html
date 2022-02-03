@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='center' style='width:60%; margin: 3% auto;'>
+    <span class="preview__date"><a href="{% url 'homepage' %}" style="text-decoration: underline;">Go back</a></span>
+    <h2 class="preview__header" itemprop="name">{{ post.title }}</h2>
+    <span class="preview__date">{{ post.created_at|date:'M d, Y | H:i' }}</span>
+    <p class="preview__excerpt" itemprop="description">{{ post.text|safe }}</p>
+</div>
+<div class='center' style='width:60%; margin: 3% auto;'>
+    <h2 class="preview__header" itemprop="name">Comments</h2>
+</div>
+{% endblock  %}

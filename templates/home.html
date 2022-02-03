@@ -24,7 +24,7 @@
                 <ul itemscope itemtype="http://schema.org/Blog">
                     {% for post in posts %}
                     <li class="preview" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-                        <a class="preview__link" href="#" itemprop="url">
+                        <a class="preview__link" href="{% url 'post_detail' post.slug %}" itemprop="url">
                             <span class="preview__date">{{ post.created_at|date:'M d, Y | H:i' }}</span>
                             <h2 class="preview__header" itemprop="name">{{ post.title }}</h2>
                             <p class="preview__excerpt" itemprop="description">{{ post.description }}...</p>
@@ -87,7 +87,7 @@
                   {% endfor %}
               </ul>
               <footer class="section-padding--sm footer">
-                <a class="footer__archive" href="#">Archive</a>
+                <a class="footer__archive" href="#">MALIKOV.DEV</a>
                 <ul class="footer__social">
                     <li><a class="fa fa-lg fa-envelope-o" href="mailto:thomas.sevbofx@gmail.com"></a></li>
                     <li><a class="fa fa-lg fa-github" href="https://github.com/sevbo2003" target="_blank"></a>

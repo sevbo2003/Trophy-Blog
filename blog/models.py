@@ -2,6 +2,7 @@ from distutils.command.upload import upload
 from statistics import mode
 from django import views
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
