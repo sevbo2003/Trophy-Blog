@@ -11,4 +11,4 @@ admin.site.register(Category)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'active','views')
     list_filter = ('updated_at', 'active', 'category', 'views')
-    # prepopulated_fields = {'slug': ('title',)}
+    prepopulated_fields = {'slug': ('title',)}
