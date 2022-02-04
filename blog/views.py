@@ -1,3 +1,4 @@
+from multiprocessing import context
 from turtle import pos
 from django.db.models import Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -25,16 +26,18 @@ def post_list(request):
 
 
 def post_detail(request, slug):
-    form = CommentForm(request.POST)
     post = get_object_or_404(Post, slug = slug)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid:
-            name = request.POST.get('name')
-            text = request.POST.get('text')
-            comment = Comments.objects.create(post=post, text=text, name=name)
+            comment = form.save(commit=False)
+            comment.post = post
             comment.save()
-            return redirect(post.slug)
-        else:
-            form = CommentForm()
-    return render(request, 'post_detail.html', {'post': post, 'form': form})
+            return redirect('post_detail', slug=post.slug)
+    else:
+        form = CommentForm()
+    context = {
+        'post': post,
+        'form': form
+    }
+    return render(request, 'post_detail.html', context)

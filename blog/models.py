@@ -44,4 +44,4 @@ class Comments(models.Model):
         ordering = ('-created_at', )
 
     def __str__(self) -> str:
-        return self.text[:30]
+        return self.text[:10] + " | " + str(len(self.text))
