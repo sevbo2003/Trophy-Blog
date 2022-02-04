@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
 {% block content %}
     <div class='center' style='width:60%; margin: 3% auto;'>
         <span class="preview__date"><a href="{% url 'homepage' %}"><i class="fas fa-home"></i> Go Home</a></span>

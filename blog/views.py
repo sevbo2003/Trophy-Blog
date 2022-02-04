@@ -24,7 +24,6 @@ def post_list(request):
     return render(request, 'home.html', context)
 
 
-
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug = slug)
     if request.method == 'POST':
