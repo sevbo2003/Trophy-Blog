@@ -1,47 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class='center' style='width:60%; margin: 3% auto;'>
-    <span class="preview__date"><a href="{% url 'homepage' %}"><i class="fas fa-home"></i> Go Home</a></span>
-    <h2 class="preview__header" itemprop="name">{{ post.title }}</h2>
-    <span class="preview__date">{{ post.created_at|date:'M d, Y | H:i' }}</span>
-    <p class="preview__excerpt" itemprop="description">{{ post.text|safe }}</p>
-</div>
-<div class='center' style='width:60%; margin: 3% auto;'>
-    <h2 class="preview__header" itemprop="name">Comments</h2>
-    <form method='post'>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value='Add a comment' style="padding:0.5% 2%; background:black; color:white;border-radius:12px; font-family: 'Space Mono', monospace;">
-    </form>
-</div>
-<div class='center' style='width:60%; margin: 3% auto;'>
-    {% if post.comments.count != 0%}
-    {% for comment in post.comments.all %}
-        <strong>{{ comment.name }} | {{ comment.created_at|date:'M d, Y | H:i' }}</strong>
-        <p>{{ comment.text }} </p>
-    {% endfor %}
-    {% else %}
-        <p>No comments yet. Be first commentor</p>
-    {% endif %}
-</div>
-<div class='center' style='width:60%; margin: 3% auto;'>
-    <footer class="section-padding--sm footer" style='margin-left:0;'>
-        <a class="footer__archive" href="#">MALIKOV</a>
-        <ul class="footer__social">
-            <li><a class="fa fa-lg fa-envelope-o" href="mailto:thomas.sevbofx@gmail.com"></a></li>
-            <li><a class="fa fa-lg fa-github" href="https://github.com/sevbo2003" target="_blank"></a>
-            </li>
-            <li><a class="fab fa-lg fa-telegram-plane" href="https://codepen.io/thomasvaeth/" target="_blank"></a>
-            </li>
-            <li><a class="fa fa-lg fa-linkedin" href="https://www.linkedin.com/in/abdusamad-malikov/"
-                   target="_blank"></a></li>
-            <li><a class="fab fa-lg fa-youtube" href="https://www.youtube.com/channel/UCmA8lwHZHfpbSkbv65awfdQ" target="_blank"></a>
-            </li>
-            <li><a class="fa fa-lg fa-facebook" href="https://www.facebook.com/abdusamad.malikov.18"
-                   target="_blank"></a></li>
-            <li><a class="fa fa-lg fa-instagram" href="https://www.instagram.com/abdusamad_malikov/"
-                   target="_blank"></a></li>
-        </ul>
-    </footer>
-</div>
-{% endblock  %}
+    <div class='center' style='width:60%; margin: 3% auto;'>
+        <span class="preview__date"><a href="{% url 'homepage' %}"><i class="fas fa-home"></i> Go Home</a></span>
+        <h2 class="preview__header" itemprop="name">{{ post.title }}</h2>
+        <span class="preview__date">{{ post.created_at|date:'M d, Y | H:i' }}</span>
+        <p class="preview__excerpt" itemprop="description">{{ post.text|safe }}</p>
+    </div>
+    <div class='center' style='width:60%; margin: 3% auto;'>
+        <h2 class="preview__header" itemprop="name">Comments</h2>
+        <span class="preview__date">{{ post.comments.count }} comments so far</span>
+        <form method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value='Add a comment'
+                   style="padding:0.5% 2%; background:black; color:white;border-radius:12px; font-family: 'Space Mono', monospace;">
+        </form>
+    </div>
+    <div class='center' style='width:60%; margin: 3% auto;'>
+        {% if post.comments.count != 0 %}
+            {% for comment in post.comments.all %}
+                <strong>{{ comment.name }} | {{ comment.created_at|date:'M d, Y | H:i' }}</strong>
+                <p>{{ comment.text }} </p>
+            {% endfor %}
+        {% else %}
+            <p>No comments yet. Be first commentor</p>
+        {% endif %}
+    </div>
+    <div class='center' style='width:60%; margin: 3% auto;'>
+        <footer class="section-padding--sm footer" style='margin-left:0;'>
+            <a class="footer__archive" href="/">MALIKOV</a>
+            <ul class="footer__social">
+                <li><a class="fa fa-lg fa-envelope-o" href="mailto:thomas.sevbofx@gmail.com"></a></li>
+                <li><a class="fa fa-lg fa-github" href="https://github.com/sevbo2003" target="_blank"></a>
+                </li>
+                <li><a class="fab fa-lg fa-telegram-plane" href="https://www.linkedin.com/in/abdusamad-malikov/"
+                       target="_blank"></a>
+                </li>
+                <li><a class="fa fa-lg fa-linkedin" href="https://www.linkedin.com/in/abdusamad-malikov/"
+                       target="_blank"></a></li>
+                <li><a class="fab fa-lg fa-youtube" href="https://www.youtube.com/channel/UCmA8lwHZHfpbSkbv65awfdQ"
+                       target="_blank"></a>
+                </li>
+                <li><a class="fa fa-lg fa-facebook" href="https://www.facebook.com/abdusamad.malikov.18"
+                       target="_blank"></a></li>
+                <li><a class="fa fa-lg fa-instagram" href="https://www.instagram.com/abdusamad_malikov/"
+                       target="_blank"></a></li>
+            </ul>
+        </footer>
+    </div>
+{% endblock %}

@@ -1,8 +1,5 @@
-from distutils.command.upload import upload
-from statistics import mode
-from django import views
 from django.db import models
-from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -13,14 +10,13 @@ class Category(models.Model):
         return self.category
 
 
-
 class Post(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=210)
     slug = models.SlugField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    text = models.TextField()
+    text = RichTextField()
     active = models.BooleanField(default=True)
     comment_count = models.IntegerField(default=0)
     view_count = models.IntegerField(default=0)
@@ -29,7 +25,7 @@ class Post(models.Model):
     category = models.ManyToManyField(Category)
 
     class Meta:
-        ordering = ('-created_at', )
+        ordering = ('-created_at',)
 
     def __str__(self) -> str:
         return self.title
@@ -41,7 +37,7 @@ class Comments(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('-created_at', )
+        ordering = ('-created_at',)
 
     def __str__(self) -> str:
         return self.text[:10] + " | " + str(len(self.text))
