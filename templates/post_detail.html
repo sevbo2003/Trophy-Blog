@@ -8,5 +8,15 @@
 </div>
 <div class='center' style='width:60%; margin: 3% auto;'>
     <h2 class="preview__header" itemprop="name">Comments</h2>
+    <form method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value='submit'>
+    </form>
 </div>
+{% comment %} <div class='center' style='width:60%; margin: 3% auto;'>
+    {% for comment in comments %}
+        <p>{{ comment.text }} </p>
+    {% endfor %}
+</div> {% endcomment %}
 {% endblock  %}

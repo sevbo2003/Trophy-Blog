@@ -13,6 +13,7 @@ class Category(models.Model):
         return self.category
 
 
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=210)
@@ -21,9 +22,9 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     text = models.TextField()
     active = models.BooleanField(default=True)
-    comments = models.IntegerField(default=0)
-    views = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
+    comment_count = models.IntegerField(default=0)
+    view_count = models.IntegerField(default=0)
+    like_count = models.IntegerField(default=0)
     images = models.ImageField(upload_to='post_images')
     category = models.ManyToManyField(Category)
 
@@ -32,3 +33,15 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+class Comments(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=30)
+    text = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-created_at', )
+
+    def __str__(self) -> str:
+        return self.text[:30]

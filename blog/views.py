@@ -2,7 +2,8 @@ from turtle import pos
 from django.db.models import Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, Post
+from .models import Category, Comments, Post
+from .forms import CommentForm
 
 
 # Create your views here.
@@ -24,5 +25,16 @@ def post_list(request):
 
 
 def post_detail(request, slug):
+    form = CommentForm(request.POST)
     post = get_object_or_404(Post, slug = slug)
-    return render(request, 'post_detail.html', {'post': post})
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid:
+            name = request.POST.get('name')
+            text = request.POST.get('text')
+            comment = Comments.objects.create(post=post, text=text, name=name)
+            comment.save()
+            return redirect(post.slug)
+        else:
+            form = CommentForm()
+    return render(request, 'post_detail.html', {'post': post, 'form': form})
