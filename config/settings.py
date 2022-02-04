@@ -3,7 +3,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -11,10 +10,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7z-mk7=t2+tu4txbrvr$yp0wjo2#jvtm!vif_j1=9#e67o!q8&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["malikov.herokuapp.com", '127.0.0.1']
 
 # Application definition
 
@@ -60,7 +58,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -70,7 +67,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -90,7 +86,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -102,7 +97,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static', ]
@@ -110,6 +105,5 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = 'static/img'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
